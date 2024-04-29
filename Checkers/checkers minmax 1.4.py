@@ -1,4 +1,4 @@
-#Version 1.4. Final version, removal of unecessary code and debug code.
+#Version 1.4 removal of unecessary code and debug code.
 #Add instructions to how the game works and how to play.
 import copy
 global Counter
