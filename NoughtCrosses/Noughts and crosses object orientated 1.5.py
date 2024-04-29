@@ -264,8 +264,6 @@ if First == "2":
     #this sets the position in the list of children nodes to contain the node with the highest score to be 0, the first location. 
         HighScorePos = 0
         for n in range(len(board1.children)):
-            print(board1.children[n].Score)
-            print(board1.children[n].boardPosition)
         #this changes the highscore if the score found for a different child node is greater, if it is less or equals to it does not change.
             if board1.children[n].Score > HighScore:
                 HighScore = board1.children[n].Score
@@ -302,8 +300,6 @@ elif First == "1":
     #this sets the position in the list of children nodes to contain the node with the highest score to be 0, the first location. 
         HighScorePos = 0
         for n in range(len(board1.children)):
-            print(board1.children[n].Score)
-            print(board1.children[n].boardPosition)
         #this changes the highscore if the score found for a different child node is greater, if it is less or equals to it does not change.
             if board1.children[n].Score > HighScore:
                 HighScore = board1.children[n].Score
@@ -337,3 +333,4 @@ elif First == "1":
     else:
             pass
          
+
