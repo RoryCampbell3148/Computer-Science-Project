@@ -1,6 +1,7 @@
-#Version 1.4. Final version, removal of unecessary code and debug code.
-#Add instructions to how the game works and how to play.
-#prints the board out in a nicer way.
+#Version 1.5. Actual final version, removal of unecessary code and debug code.
+#Program no longer crashses.
+#Board print out looks nicer.
+#inputs are fully sanitised
 import copy
 global Counter
 Counter = 0
@@ -33,47 +34,53 @@ def player1(Board):
         row = input("What row is the piece you want to move on(0,7)?")
     row = int(row)
     #checks that the piece is actually there.
-    Valid = False
-    while Valid == False:
-        if Board[row][col] == "O":
+    if Board[row][col] == "O":
                 #asks the player if they want to move their piece left or right.
-                LorR = input("do you want to move left or right(1 for left, 2 for right) ?")
+        LorR = 0
+        while LorR != "1" and LorR !="2":
+            LorR = input("do you want to move left or right(1 for left, 2 for right) ?")
                     #checks to see if the move is actually possible, so if there is something in the way or the edge of the board
-                if LorR == "1":
+        if LorR == "1":
                         #checks if the possible move would still be on the board
-                    if col == 0 or row == 0:
-                        print("This is not a valid move")
-                    else:
+            if col == 0 or row == 0:
+                print("This is not a valid move")
+                player1(Board)
+                return Board
+            else:
                             #checks to see that the piece is not moving into one of its own.
-                        if Board[row-1][col-1] != "O":
-                            Board[row-1][col-1] = "O"
-                            Board[row][col] = ""
-                            Valid = True
-                            displayboard(Board)
-                        else:
-                            print("This is not a valid move")
+                if Board[row-1][col-1] != "O":
+                    Board[row-1][col-1] = "O"
+                    Board[row][col] = ""
+                    Valid = True
+                    displayboard(Board)
+                else:
+                    print("This is not a valid move")
+                    player1(Board)
+                    return Board
                                 
-                elif LorR == "2":
+        elif LorR == "2":
                          #checks if the possible move would still be on the board
-                    if col == 3 or row == 0:
-                        print("This is not a valid move")
-                    else:
+            if col == 3 or row == 0:
+                print("This is not a valid move")
+            else:
                         #checks to see that the piece is not moving into one of its own.
-                        if Board[row-1][col+1] != "O":
-                            Board[row-1][col+1] = "O"
-                            Board[row][col] = ""
-                            Valid = True
-                            displayboard(Board)
-                        else:
-                            print("This is not a valid move")
+                if Board[row-1][col+1] != "O":
+                    Board[row-1][col+1] = "O"
+                    Board[row][col] = ""
+                    Valid = True
+                    displayboard(Board)
+                else:
+                    print("This is not a valid move")
+                    player1(Board)
+                    return Board
                         
                      
-        else:
-            Valid = False
-            print("There is no piece here")
-            player1(Board)
-            return Board
+    else:
+        Valid = False
+        print("There is no piece here")
+        player1(Board)
         return Board
+    return Board
 
 
 def displayboard(Board):
@@ -459,6 +466,7 @@ while Done == False:
     Board[BestRow][BestCol] = "X"
     Board[OldRow][OldCol] = ""
     Done = checkwin(Board,NumX,NumO)
+
 
 
 
