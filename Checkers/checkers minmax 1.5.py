@@ -84,7 +84,7 @@ def player1(Board):
 
 
 def displayboard(Board):
-    print("  | 0  |  1  |  2  |  3  |")
+    print("  | 0 | 1 | 2 | 3 |")
     counter = 0
     for n in range (len(Board)):
         String = ""
@@ -92,7 +92,7 @@ def displayboard(Board):
             if m !="X" and m !="O":
                 m = "-"
             String = String + m
-            String = String + "  |  "
+            String = String + " | "
         print(counter,"|",String)
         counter = counter + 1
     
